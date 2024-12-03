@@ -21,7 +21,7 @@ export default function Leaderboard() {
                     <p className="text-lg">Check out the top trivia masters and their scores!</p>
                 </div>
             </header>
-
+            <p>This page is not yet functional, only sample data is shown as filler.</p>
             {/* Leaderboard Table */}
             <main className="flex-grow container mx-auto px-6 py-12">
                 <div className="overflow-x-auto">

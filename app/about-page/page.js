@@ -22,7 +22,7 @@ export default function About() {
                 </p>
                 <div className="flex justify-center">
                     <Link
-                        href="/quiz"
+                        href="/categories-page"
                         className="bg-blue-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-blue-700"
                     >
                         Explore Quizzes
@@ -42,21 +42,19 @@ export default function About() {
 
             {/* Team Section */}
             <section className="container mx-auto px-6 py-12">
-                <h2 className="text-3xl font-bold text-center mb-6">Meet the Team</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                    {[
-                        { name: 'Alex Johnson', role: 'Founder & CEO', image: '/images/team1.jpg' },
-                        { name: 'Emily Carter', role: 'Content Creator', image: '/images/team2.jpg' },
-                        { name: 'Michael Brown', role: 'Developer', image: '/images/team3.jpg' },
+                <h2 className="text-3xl font-bold text-center mb-6">Meet the Developer</h2>
+                <div className="grid grid-cols-1 w-96 gap-8">
+                    {[                        
+                        { name: 'Hanish Jierdh', role: 'Developer', image: '/images/profile.png' },
                     ].map((member, index) => (
                         <div
                             key={index}
-                            className="bg-white shadow-lg rounded-lg overflow-hidden text-center"
+                            className="bg-white shadow-lg rounded-lg overflow-hidden content-center text-center"
                         >
                             <img
                                 src={member.image}
                                 alt={member.name}
-                                className="w-full h-48 object-cover"
+                                className="w-100 h-100 object-cover"
                             />
                             <div className="p-4">
                                 <h3 className="text-xl font-semibold">{member.name}</h3>
@@ -73,7 +71,7 @@ export default function About() {
                     <h2 className="text-3xl font-bold mb-4">Ready to Test Your Knowledge?</h2>
                     <p className="text-lg mb-6">Join Brain Buzz and start your trivia journey today!</p>
                     <Link
-                        href="/signup"
+                        href="/signup-page"
                         className="bg-white text-blue-600 px-6 py-3 rounded-full shadow-md hover:bg-gray-100"
                     >
                         Get Started

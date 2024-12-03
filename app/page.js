@@ -48,7 +48,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-4">Ready to Boost Your Knowledge?</h2>
           <p className="text-lg mb-6">Join now and challenge your friends to see who's the smartest!</p>
           <Link
-            href="/signup"
+            href="/signup-page"
             className="bg-blue-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-blue-700"
           >
             Get Started
