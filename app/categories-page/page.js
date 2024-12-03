@@ -1,7 +1,6 @@
 'use client';
 import Link from "next/link";
 import categories from "./categories.json";
-import { useState } from "react";
 
 export default function Categories() {
 
@@ -21,20 +20,27 @@ export default function Categories() {
               key={category.id}
               className="bg-white shadow-lg rounded-lg overflow-hidden transform transition hover:scale-105"
             >
-              <img
-                src={category.image}
-                alt={category.title}
-                className="w-full h-48 object-cover "
-              />
+              <div className="group relative">
+                <img
+                  src={category.image} // This is the first static  image
+                  alt={category.title}
+                  className="w-auto h-auto inset-0 transition-all opacity-100 duration-300"
+                />
+                <img
+                  src={category.hoverImage} // This is the second gif image on hover
+                  alt={category.title}
+                  className="w-full h-full absolute inset-0 transition-all duration-300 opacity-0 group-hover:opacity-100"
+                />
+              </div>
               <div className="p-4 text-center">
                 <h2 className="text-2xl font-semibold mb-2">{category.title}</h2>
                 <p className="text-gray-600 mb-4">{category.description}</p>
-                <a
+                <Link
                   href={`/quiz?category=${category.id}`}
                   className="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700"
                 >
                   Start Quiz
-                </a>
+                </Link>
               </div>
             </div>
           ))}

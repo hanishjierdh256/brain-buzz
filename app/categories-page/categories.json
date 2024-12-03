@@ -1,170 +1,178 @@
 [
     {
-        "id": 9,
-        "title": "General Knowledge",
-        "description": "Test your knowledge of random facts from a variety of topics.",
-        "image": "/images/general_knowledge.png",
-        "icon_url": "https://www.flaticon.com/free-icon/book_8132334?term=general+knowledge&page=1&position=7&origin=search&related_id=8132334"
+      "id": 9,
+      "title": "General Knowledge",
+      "description": "Test your knowledge of random facts from a variety of topics.",
+      "image": "/images/general_knowledge.png",
+      "hoverImage": "/images/general_knowledge.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/brain_16678383?term=knowledge&page=1&position=11&origin=search&related_id=16678383"
     },
     {
-        "id": 10,
-        "title": "Books",
-        "description": "Explore the world of literature, from classics to modern novels.",
-        "image": "/images/books.png",
-        "icon_url": "https://www.flaticon.com/free-icon/book_3330314"
+      "id": 10,
+      "title": "Books",
+      "description": "Explore the world of literature, from classics to modern novels.",
+      "image": "/images/books.png",
+      "hoverImage": "/images/books.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/read_12743787?term=books&page=1&position=5&origin=search&related_id=12743787"
     },
     {
-        "id": 11,
-        "title": "Film",
-        "description": "Dive into the cinematic universe and prove your film expertise.",
-        "image": "/images/film.png",
-        "icon_url": "https://www.flaticon.com/free-icon/film-slate_3171927?term=film&page=1&position=10&origin=search&related_id=3171927"
+      "id": 11,
+      "title": "Film",
+      "description": "Dive into the cinematic universe and prove your film expertise.",
+      "image": "/images/film.png",
+      "hoverImage": "/images/film.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/clapperboard_15557755?term=film&page=1&position=8&origin=search&related_id=15557755"
     },
     {
-        "id": 12,
-        "title": "Music",
-        "description": "Challenge yourself with trivia from all music genres and eras.",
-        "image": "/images/music.png",
-        "icon_url": "https://www.flaticon.com/free-icon/listen_2829075?term=music&page=1&position=24&origin=search&related_id=2829075"
+      "id": 12,
+      "title": "Music",
+      "description": "Challenge yourself with trivia from all music genres and eras.",
+      "image": "/images/music.png",
+      "hoverImage": "/images/music.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/headphones_14352315?term=music&page=1&position=9&origin=search&related_id=14352315"
     },
     {
-        "id": 13,
-        "title": "Musicals and Theatres",
-        "description": "Discover the magic of musicals and theatrical productions.",
-        "image": "/images/musicals.png",
-        "icon_url": "https://www.flaticon.com/free-icon/theater_15886608?term=theatre&page=1&position=12&origin=search&related_id=15886608"
+      "id": 13,
+      "title": "Musicals and Theatres",
+      "description": "Discover the magic of musicals and theatrical productions.",
+      "image": "/images/musicals.png",
+      "hoverImage": "/images/musicals.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/masks_12749805?term=theatres&page=1&position=7&origin=search&related_id=12749805"
     },
     {
-        "id": 14,
-        "title": "Television",
-        "description": "From classic series to modern hits, test your TV knowledge.",
-        "image": "/images/television.png",
-        "icon_url": "https://www.flaticon.com/free-icon/television_4358295?term=television&page=1&position=4&origin=search&related_id=4358295"
+      "id": 14,
+      "title": "Television",
+      "description": "From classic series to modern hits, test your TV knowledge.",
+      "image": "/images/television.png",
+      "hoverImage": "/images/television.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/television_17770872?term=television&page=1&position=2&origin=search&related_id=17770872"
     },
     {
-        "id": 15,
-        "title": "Video Games",
-        "description": "Level up your gaming knowledge with this exciting category.",
-        "image": "/images/video_games.png",
-        "icon_url": "https://www.flaticon.com/free-icon/game-console_2780137?term=video+games&page=1&position=3&origin=search&related_id=2780137"
+      "id": 15,
+      "title": "Video Games",
+      "description": "Level up your gaming knowledge with this exciting category.",
+      "image": "/images/video_games.png",
+      "hoverImage": "/images/video_games.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/videogame_14255749?term=video+games&page=1&position=1&origin=search&related_id=14255749"
     },
     {
-        "id": 16,
-        "title": "Board Games",
-        "description": "Roll the dice and test your board game trivia skills.",
-        "image": "/images/board_games.png",
-        "icon_url": "https://www.flaticon.com/free-icon/board-game_5190878?term=board+games&page=1&position=1&origin=search&related_id=5190878"
+      "id": 16,
+      "title": "Board Games",
+      "description": "Roll the dice and test your board game trivia skills.",
+      "image": "/images/board_games.png",
+      "hoverImage": "/images/board_games.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/chess_13708024?term=chess&page=1&position=2&origin=search&related_id=13708024"
     },
     {
-        "id": 17,
-        "title": "Science and Nature",
-        "description": "Uncover the secrets of science and the natural world.",
-        "image": "/images/science_and_nature.png",
-        "icon_url": "https://www.flaticon.com/free-icon/science_15394641?term=science+and+nature&page=1&position=1&origin=search&related_id=15394641"
+      "id": 17,
+      "title": "Science and Nature",
+      "description": "Uncover the secrets of science and the natural world.",
+      "image": "/images/science_and_nature.png",
+      "hoverImage": "/images/science_and_nature.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/experiment_11324089?term=science&page=1&position=3&origin=search&related_id=11324089"
     },
     {
-        "id": 18,
-        "title": "Computers",
-        "description": "From coding to hardware, prove your computer expertise.",
-        "image": "/images/computers.png",
-        "icon_url": "https://www.flaticon.com/free-icon/cloud-computing_9709038?term=computers&page=1&position=21&origin=search&related_id=9709038"
+      "id": 18,
+      "title": "Computers",
+      "description": "From coding to hardware, prove your computer expertise.",
+      "image": "/images/computers.png",
+      "hoverImage": "/images/computers.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/web-developer_15591404?term=computer&page=1&position=8&origin=search&related_id=15591404"
     },
     {
-        "id": 19,
-        "title": "Mathematics",
-        "description": "Test your numerical and logical reasoning skills.",
-        "image": "/images/mathematics.png",
-        "icon_url": "https://www.flaticon.com/free-icon/calculating_1739515?term=mathematics&page=1&position=2&origin=search&related_id=1739515"
+      "id": 19,
+      "title": "Mathematics",
+      "description": "Test your numerical and logical reasoning skills.",
+      "image": "/images/mathematics.png",
+      "hoverImage": "/images/mathematics.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/maths_11545372?term=mathematics&page=1&position=4&origin=search&related_id=11545372"
     },
     {
-        "id": 20,
-        "title": "Mythology",
-        "description": "Explore the fascinating world of myths and legends.",
-        "image": "/images/mythology.png",
-        "icon_url": "https://www.flaticon.com/free-icon/zeus_4793111?term=mythology&page=1&position=3&origin=search&related_id=4793111"
+      "id": 20,
+      "title": "Mythology",
+      "description": "Explore the fascinating world of myths and legends.",
+      "image": "/images/mythology.png",
+      "hoverImage": "/images/mythology.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/sphynx_12525755?term=mythology&page=1&position=6&origin=search&related_id=12525755"
     },
     {
-        "id": 21,
-        "title": "Sports",
-        "description": "Show off your knowledge of sports history and achievements.",
-        "image": "/images/sports.png",
-        "icon_url": "https://www.flaticon.com/free-icon/sports_4163684?term=sports&page=1&position=5&origin=search&related_id=4163684"
+      "id": 21,
+      "title": "Sports",
+      "description": "Show off your knowledge of sports history and achievements.",
+      "image": "/images/sports.png",
+      "hoverImage": "/images/sports.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/sports-ball_13707988?term=sport&page=1&position=9&origin=search&related_id=13707988"
     },
     {
-        "id": 22,
-        "title": "Geography",
-        "description": "Discover the wonders of the world through geographical trivia.",
-        "image": "/images/geography.png",
-        "icon_url": "https://www.flaticon.com/free-icon/geography_290336?term=geography&page=1&position=2&origin=search&related_id=290336"
+      "id": 22,
+      "title": "Geography",
+      "description": "Discover the wonders of the world through geographical trivia.",
+      "image": "/images/geography.png",
+      "hoverImage": "/images/geography.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/africa_15911074?term=geography&page=1&position=8&origin=search&related_id=15911074"
     },
     {
-        "id": 23,
-        "title": "History",
-        "description": "Relive historical events and milestones through trivia.",
-        "image": "/images/history.png",
-        "icon_url": "https://www.flaticon.com/free-icon/history-book_6462711?term=history&page=1&position=24&origin=search&related_id=6462711"
+      "id": 23,
+      "title": "History",
+      "description": "Relive historical events and milestones through trivia.",
+      "image": "/images/history.png",
+      "hoverImage": "/images/history.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/scroll_11617130?term=history&page=1&position=4&origin=search&related_id=11617130"
     },
     {
-        "id": 24,
-        "title": "Politics",
-        "description": "Test your knowledge of political systems and events.",
-        "image": "/images/politics.png",
-        "icon_url": "https://www.flaticon.com/free-icon/politician_10562871?term=politics&page=1&position=11&origin=search&related_id=10562871"
+      "id": 24,
+      "title": "Politics",
+      "description": "Test your knowledge of political systems and events.",
+      "image": "/images/politics.png",
+      "hoverImage": "/images/politics.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/democracy_18264493?term=politics&page=1&position=13&origin=search&related_id=18264493"
     },
     {
-        "id": 25,
-        "title": "Art",
-        "description": "Dive into the world of art, from classical to modern.",
-        "image": "/images/art.png",
-        "icon_url": "https://www.flaticon.com/free-icon/mona-lisa_3200013?term=art&page=1&position=18&origin=search&related_id=3200013"
+      "id": 25,
+      "title": "Art",
+      "description": "Dive into the world of art, from classical to modern.",
+      "image": "/images/art.png",
+      "hoverImage": "/images/art.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/art-work_15353487?term=art&page=1&position=28&origin=search&related_id=15353487"
     },
     {
-        "id": 26,
-        "title": "Celebrities",
-        "description": "How well do you know your favorite stars and icons?",
-        "image": "/images/celebrities.gif",
-        "icon_url": ""
+      "id": 26,
+      "title": "Celebrities",
+      "description": "How well do you know your favorite stars and icons?",
+      "image": "/images/celebrities.png",
+      "hoverImage": "/images/celebrities.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/actress_17659517?term=celebrity&page=1&position=5&origin=search&related_id=17659517"
     },
     {
-        "id": 27,
-        "title": "Animals",
-        "description": "Explore the animal kingdom with this fun trivia category.",
-        "image": "/images/animals.png",
-        "icon_url": ""
+      "id": 27,
+      "title": "Animals",
+      "description": "Explore the animal kingdom with this fun trivia category.",
+      "image": "/images/animals.png",
+      "hoverImage": "/images/animals.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/biodiversity_17904114?term=animal&page=1&position=26&origin=search&related_id=17904114"
     },
     {
-        "id": 28,
-        "title": "Vehicles",
-        "description": "Test your knowledge of cars, planes, and other vehicles.",
-        "image": "/images/vehicles.png",
-        "icon_url": ""
+      "id": 28,
+      "title": "Vehicles",
+      "description": "Test your knowledge of cars, planes, and other vehicles.",
+      "image": "/images/vehicles.png",
+      "hoverImage": "/images/vehicles.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/mini-car_14951472?term=vehicles&page=1&position=2&origin=search&related_id=14951472"
     },
     {
-        "id": 29,
-        "title": "Comics",
-        "description": "Show off your comic book knowledge with this category.",
-        "image": "/images/comics.png",
-        "icon_url": ""
+      "id": 29,
+      "title": "Comics",
+      "description": "Show off your comic book knowledge with this category.",
+      "image": "/images/comics.png",
+      "hoverImage": "/images/comics.gif",
+      "icon_url": "https://www.flaticon.com/free-animated-icon/magazine_12756500?term=magazine&page=1&position=2&origin=search&related_id=12756500"
     },
     {
-        "id": 30,
-        "title": "Gadgets",
-        "description": "From phones to wearables, test your knowledge of tech gadgets.",
-        "image": "/images/gadgets.png",
-        "icon_url": ""
-    },
-    {
-        "id": 31,
-        "title": "Japanese Anime and Manga",
-        "description": "Dive into the captivating world of anime and manga.",
-        "image": "/images/anime.png",
-        "icon_url": ""
-    },
-    {
-        "id": 32,
-        "title": "Cartoon and Animations",
-        "description": "Revisit your favorite cartoons and animated series.",
-        "image": "/images/cartoons.png",
-        "icon_url": ""
+      "id": 30,
+      "title": "Gadgets",
+      "description": "From phones to wearables, test your knowledge of tech gadgets.",
+      "image": "/images/gadgets.png",
+      "hoverImage": "/images/gadgets.gif",
+      "icon_url": ""
     }
 ]
