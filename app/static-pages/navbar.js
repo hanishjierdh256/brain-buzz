@@ -25,7 +25,7 @@ export default function Navbar() {
                     className="text-white hover:text-yellow-300"
                 >Categories</Link></li>
                 <li><Link
-                    href="#leaderboard"
+                    href="/leaderboard-page"
                     className="text-white hover:text-yellow-300"
                 >Leaderboard</Link></li>
                 <li><Link
