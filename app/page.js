@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import categories from "./categories-page/categories.json";
 
 export default function Home() {
@@ -43,11 +44,15 @@ export default function Home() {
                     src={category.image} // This is the first static  image
                     alt={category.title}
                     className="w-auto h-auto inset-0 transition-all opacity-100 duration-300"
+                    width={300} // Add a fixed width
+                    height={300} // Add a fixed height
                   />
                   <Image
                     src={category.hoverImage} // This is the second gif image on hover
                     alt={category.title}
                     className="w-full h-full absolute inset-0 transition-all duration-300 opacity-0 group-hover:opacity-100"
+                    width={300} // Add a fixed width
+                    height={300} // Add a fixed height
                   />
                 </div>
                 <div className="p-4 text-center">

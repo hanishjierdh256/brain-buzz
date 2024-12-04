@@ -46,18 +46,18 @@ export default function About() {
                 <h2 className="text-3xl font-bold text-center mb-6">Meet the Developer</h2>
                 <div className="max-w-5xl mx-auto grid grid-cols-1 w-96 gap-8">
                     {[
-                        { name: 'Hanish Jierdh', role: 'Developer', image: '/images/profile.png' },
+                        { name: 'Hanish Jierdh', role: 'Developer', image: '/images/profile.png' }
                     ].map((member, index) => (
                         <div
                             key={index}
-                            className="bg-white shadow-lg rounded-lg overflow-hidden content-center text-center"
+                            className="bg-white shadow-lg rounded-lg overflow-hidden text-center"
                         >
                             <Image
                                 src={member.image}
                                 alt={member.name}
-                                className="w-full h-full object-cover"
-                                width={500}  // Adjust width and height as per your image size
-                                height={500} // Adjust width and height as per your image size
+                                className="object-contain mx-auto"
+                                width={300}  // Adjust width as needed
+                                height={300} // Adjust height as needed
                             />
                             <div className="p-4">
                                 <h3 className="text-xl font-semibold">{member.name}</h3>

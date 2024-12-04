@@ -28,7 +28,7 @@ export default function Categories() {
                 <Image
                   src={category.image}
                   alt={category.title}
-                  width={500} // Provide proper width and height for optimization
+                  width={300} // Provide proper width and height for optimization
                   height={300} // Provide proper width and height for optimization
                   className="w-full h-full object-cover transition-all opacity-100 duration-300"
                 />
@@ -36,7 +36,7 @@ export default function Categories() {
                 <Image
                   src={category.hoverImage}
                   alt={category.title}
-                  width={500} // Provide proper width and height for optimization
+                  width={300} // Provide proper width and height for optimization
                   height={300} // Provide proper width and height for optimization
                   className="w-full h-full absolute inset-0 transition-all duration-300 opacity-0 group-hover:opacity-100"
                 />
