@@ -1,5 +1,6 @@
 'use client';
 import Link from "next/link";
+import Image from "next/image";
 
 export default function About() {
     return (
@@ -18,7 +19,7 @@ export default function About() {
                 <h2 className="text-3xl font-bold text-center mb-6">Who We Are</h2>
                 <p className="text-gray-600 text-center max-w-3xl mx-auto mb-8">
                     Brain Buzz is a trivia quiz platform designed to test your knowledge across various categories, from science to pop culture.
-                    Whether you're a trivia enthusiast or a casual learner, our quizzes provide a fun and engaging experience for everyone.
+                    Whether you&apos;re a trivia enthusiast or a casual learner, our quizzes provide a fun and engaging experience for everyone.
                 </p>
                 <div className="flex justify-center">
                     <Link
@@ -44,17 +45,19 @@ export default function About() {
             <section className="container mx-auto px-6 py-12">
                 <h2 className="text-3xl font-bold text-center mb-6">Meet the Developer</h2>
                 <div className="max-w-5xl mx-auto grid grid-cols-1 w-96 gap-8">
-                    {[                        
+                    {[
                         { name: 'Hanish Jierdh', role: 'Developer', image: '/images/profile.png' },
                     ].map((member, index) => (
                         <div
                             key={index}
                             className="bg-white shadow-lg rounded-lg overflow-hidden content-center text-center"
                         >
-                            <img
+                            <Image
                                 src={member.image}
                                 alt={member.name}
-                                className="w-100 h-100 object-cover"
+                                className="w-full h-full object-cover"
+                                width={500}  // Adjust width and height as per your image size
+                                height={500} // Adjust width and height as per your image size
                             />
                             <div className="p-4">
                                 <h3 className="text-xl font-semibold">{member.name}</h3>
