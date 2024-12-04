@@ -6,7 +6,7 @@ export default function Signup() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
-                <h1 className="text-2xl font-bold text-center text-blue-600 mb-6">Create an Account</h1>
+                <h1 className="text-2xl font-bold text-center text-blue-600 mb-6">Create an Account Does not work yet</h1>
 
                 {/* Signup Form */}
                 <form className="space-y-4">
@@ -84,14 +84,26 @@ export default function Signup() {
                         type="button"
                         className="w-full flex items-center justify-center py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100"
                     >
-                        <Image src="/icons/google-icon.svg" alt="Google" className="h-5 w-5 mr-2" />
+                        <Image
+                            src="/icons/google-icon.svg"
+                            alt="Google"
+                            className="h-5 w-5 mr-2"
+                            width={50}
+                            height={50}
+                        />
                         Sign Up with Google
                     </button>
                     <button
                         type="button"
                         className="w-full flex items-center justify-center py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100"
                     >
-                        <Image src="/icons/facebook-icon.svg" alt="Facebook" className="h-5 w-5 mr-2" />
+                        <Image
+                            src="/icons/facebook-icon.svg"
+                            alt="Facebook"
+                            className="h-5 w-5 mr-2"
+                            width={50}
+                            height={50}
+                        />
                         Sign Up with Facebook
                     </button>
                 </div>

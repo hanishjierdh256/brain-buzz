@@ -45,10 +45,10 @@ export default function Categories() {
                 <h2 className="text-2xl font-semibold mb-2">{category.title}</h2>
                 <p className="text-gray-600 mb-4">{category.description}</p>
                 <Link
-                  href={`/quiz-page?category=${category.id}`} // Assuming dynamic routing for quiz page
+                  href={`/quiz-page?categoryId=${category.id}`}
                   className="bg-blue-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-700"
                 // onClick={() => {
-                //   setCategory(category.id); // Uncomment if you plan to use this state
+                //   setCategory(category.id); 
                 //   console.log(category.id);
                 // }}
                 >
