@@ -1,12 +1,13 @@
 'use client';
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
     return (
         <nav className="flex items-center justify-between p-4 bg-blue-800 shadow-md">
             {/* Logo */}
             <div className="flex items-center text-white text-xl font-bold">
-                <img
+                <Image
                     src="/site_logo.png"
                     alt="Brain Buzz Logo"
                     className="w-8 h-8 mr-3"

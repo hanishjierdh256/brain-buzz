@@ -19,7 +19,7 @@ export default function About() {
                 <h2 className="text-3xl font-bold text-center mb-6">Who We Are</h2>
                 <p className="text-gray-600 text-center max-w-3xl mx-auto mb-8">
                     Brain Buzz is a trivia quiz platform designed to test your knowledge across various categories, from science to pop culture.
-                    Whether you&apos;re a trivia enthusiast or a casual learner, our quizzes provide a fun and engaging experience for everyone.
+                    Whether you are a trivia enthusiast or a casual learner, our quizzes provide a fun and engaging experience for everyone.
                 </p>
                 <div className="flex justify-center">
                     <Link

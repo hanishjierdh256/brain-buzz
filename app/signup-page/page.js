@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Signup() {
     return (
@@ -83,14 +84,14 @@ export default function Signup() {
                         type="button"
                         className="w-full flex items-center justify-center py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100"
                     >
-                        <img src="/icons/google-icon.svg" alt="Google" className="h-5 w-5 mr-2" />
+                        <Image src="/icons/google-icon.svg" alt="Google" className="h-5 w-5 mr-2" />
                         Sign Up with Google
                     </button>
                     <button
                         type="button"
                         className="w-full flex items-center justify-center py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100"
                     >
-                        <img src="/icons/facebook-icon.svg" alt="Facebook" className="h-5 w-5 mr-2" />
+                        <Image src="/icons/facebook-icon.svg" alt="Facebook" className="h-5 w-5 mr-2" />
                         Sign Up with Facebook
                     </button>
                 </div>

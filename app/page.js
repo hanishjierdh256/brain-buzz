@@ -39,12 +39,12 @@ export default function Home() {
                 className="bg-white shadow-md rounded-lg overflow-hidden transform transition hover:scale-105"
               >
                 <div className="group relative">
-                  <img
+                  <Image
                     src={category.image} // This is the first static  image
                     alt={category.title}
                     className="w-auto h-auto inset-0 transition-all opacity-100 duration-300"
                   />
-                  <img
+                  <Image
                     src={category.hoverImage} // This is the second gif image on hover
                     alt={category.title}
                     className="w-full h-full absolute inset-0 transition-all duration-300 opacity-0 group-hover:opacity-100"
@@ -63,7 +63,7 @@ export default function Home() {
       <section className="bg-gray-100 py-12">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Boost Your Knowledge?</h2>
-          <p className="text-lg mb-6">Join now and challenge your friends to see who's the smartest!</p>
+          <p className="text-lg mb-6">Join now and challenge your friends to see who is the smartest!</p>
           <Link
             href="/signup-page"
             className="bg-blue-600 text-white px-6 py-3 rounded-full shadow-md hover:bg-blue-700"
