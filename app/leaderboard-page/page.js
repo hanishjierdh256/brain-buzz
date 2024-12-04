@@ -4,11 +4,11 @@ import Link from 'next/link';
 export default function Leaderboard() {
     // Sample leaderboard data (replace with API data if available)
     const leaderboardData = [
-        { rank: 1, name: 'Alice Johnson', score: 950, quizzes: 20 },
-        { rank: 2, name: 'Bob Smith', score: 920, quizzes: 18 },
-        { rank: 3, name: 'Charlie Brown', score: 890, quizzes: 15 },
-        { rank: 4, name: 'Diana Ross', score: 870, quizzes: 12 },
-        { rank: 5, name: 'Edward King', score: 860, quizzes: 14 },
+        { rank: 1, name: "Alice Johnson", score: 950, quizzes: 20 },
+        { rank: 2, name: "Bob Smith", score: 920, quizzes: 18 },
+        { rank: 3, name: "Charlie Brown", score: 890, quizzes: 15 },
+        { rank: 4, name: "Diana Ross", score: 870, quizzes: 12 },
+        { rank: 5, name: "Edward King", score: 860, quizzes: 14 },
     ];
 
     return (

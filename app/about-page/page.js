@@ -46,7 +46,7 @@ export default function About() {
                 <h2 className="text-3xl font-bold text-center mb-6">Meet the Developer</h2>
                 <div className="max-w-5xl mx-auto grid grid-cols-1 w-96 gap-8">
                     {[
-                        { name: 'Hanish Jierdh', role: 'Developer', image: '/images/profile.png' }
+                        { name: "Hanish Jierdh", role: "Developer", image: "/images/profile.png" }
                     ].map((member, index) => (
                         <div
                             key={index}

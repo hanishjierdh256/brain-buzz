@@ -38,11 +38,13 @@ export default function Navbar() {
                     >About</Link></li>
                 </ul>
 
-                {/* Theme Toggle */}
+                {/* Sign In Button */}
                 <div>
-                    <button className="text-white text-2xl">
-                        🌙
-                    </button>
+                    <Link href="/login-page">
+                        <button className="text-white bg-yellow-600 px-6 py-2 rounded-full hover:bg-yellow-400">
+                            Login
+                        </button>
+                    </Link>
                 </div>
             </div>
         </nav>
