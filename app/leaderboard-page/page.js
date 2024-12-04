@@ -58,7 +58,7 @@ export default function Leaderboard() {
                     <h2 className="text-3xl font-bold mb-4">Want to See Your Name Here?</h2>
                     <p className="text-lg mb-6">Join the challenge and climb the leaderboard!</p>
                     <Link
-                        href="/quiz"
+                        href="/categories-page"
                         className="bg-white text-blue-600 px-6 py-3 rounded-full shadow-md hover:bg-gray-100"
                     >
                         Take a Quiz Now
