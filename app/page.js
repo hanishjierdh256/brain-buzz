@@ -1,7 +1,17 @@
 'use client';
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import categories from "./categories-page/categories.json";
+
 export default function Home() {
+  const [randomCategories, setRandomCategories] = useState([]);
+
+  useEffect(() => {
+    // Shuffle and select 3 categories on the client side
+    const shuffledCategories = [...categories].sort(() => Math.random() - 0.5).slice(0, 3);
+    setRandomCategories(shuffledCategories);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
@@ -22,23 +32,30 @@ export default function Home() {
       <main className="flex-grow">
         <section className="container mx-auto px-6 py-12">
           <h2 className="text-3xl font-bold text-center mb-8">Choose a Random Category</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {categories
-              .sort(() => Math.random() - 0.5) // Shuffle the array
-              .slice(0, 3) // Take the first 3 elements
-              .map((category, index) => (
-                <div
-                  key={index}
-                  className="bg-white shadow-md rounded-lg overflow-hidden transform transition hover:scale-105"
-                >
-                  <img src={category.image} alt={category.title} className="w-full h-48 object-cover" />
-                  <div className="p-4 text-center">
-                    <h3 className="text-xl font-semibold">{category.title}</h3>
-                  </div>
+          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {randomCategories.map((category, index) => (
+              <div
+                key={index}
+                className="bg-white shadow-md rounded-lg overflow-hidden transform transition hover:scale-105"
+              >
+                <div className="group relative">
+                  <img
+                    src={category.image} // This is the first static  image
+                    alt={category.title}
+                    className="w-auto h-auto inset-0 transition-all opacity-100 duration-300"
+                  />
+                  <img
+                    src={category.hoverImage} // This is the second gif image on hover
+                    alt={category.title}
+                    className="w-full h-full absolute inset-0 transition-all duration-300 opacity-0 group-hover:opacity-100"
+                  />
                 </div>
-              ))}
+                <div className="p-4 text-center">
+                  <h3 className="text-xl font-semibold">{category.title}</h3>
+                </div>
+              </div>
+            ))}
           </div>
-
         </section>
       </main>
 

@@ -24,7 +24,7 @@ export default function Leaderboard() {
             <p>This page is not yet functional, only sample data is shown as filler.</p>
             {/* Leaderboard Table */}
             <main className="flex-grow container mx-auto px-6 py-12">
-                <div className="overflow-x-auto">
+                <div className="max-w-5xl mx-auto overflow-x-auto">
                     <table className="w-full table-auto border-collapse bg-white shadow-lg rounded-lg">
                         <thead>
                             <tr className="bg-blue-600 text-white">

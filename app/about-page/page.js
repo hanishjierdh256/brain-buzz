@@ -43,7 +43,7 @@ export default function About() {
             {/* Team Section */}
             <section className="container mx-auto px-6 py-12">
                 <h2 className="text-3xl font-bold text-center mb-6">Meet the Developer</h2>
-                <div className="grid grid-cols-1 w-96 gap-8">
+                <div className="max-w-5xl mx-auto grid grid-cols-1 w-96 gap-8">
                     {[                        
                         { name: 'Hanish Jierdh', role: 'Developer', image: '/images/profile.png' },
                     ].map((member, index) => (
