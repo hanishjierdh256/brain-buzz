@@ -1,6 +1,6 @@
 'use client';
 import Link from "next/link";
-
+import categories from "./categories-page/categories.json";
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -13,7 +13,7 @@ export default function Home() {
             href="/categories-page"
             className="bg-white text-blue-600 px-6 py-3 rounded-full shadow-md hover:bg-gray-100"
           >
-            Choose a Category
+            See all Categories
           </Link>
         </div>
       </header>
@@ -21,24 +21,24 @@ export default function Home() {
       {/* Featured Categories */}
       <main className="flex-grow">
         <section className="container mx-auto px-6 py-12">
-          <h2 className="text-3xl font-bold text-center mb-8">Choose Your Favorite Category</h2>
+          <h2 className="text-3xl font-bold text-center mb-8">Choose a Random Category</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {[
-              { title: 'Science', image: '/science.jpg' },
-              { title: 'History', image: '/history.jpg' },
-              { title: 'Sports', image: '/sports.jpg' },
-            ].map((category, index) => (
-              <div
-                key={index}
-                className="bg-white shadow-md rounded-lg overflow-hidden transform transition hover:scale-105"
-              >
-                <img src={category.image} alt={category.title} className="w-full h-48 object-cover" />
-                <div className="p-4 text-center">
-                  <h3 className="text-xl font-semibold">{category.title}</h3>
+            {categories
+              .sort(() => Math.random() - 0.5) // Shuffle the array
+              .slice(0, 3) // Take the first 3 elements
+              .map((category, index) => (
+                <div
+                  key={index}
+                  className="bg-white shadow-md rounded-lg overflow-hidden transform transition hover:scale-105"
+                >
+                  <img src={category.image} alt={category.title} className="w-full h-48 object-cover" />
+                  <div className="p-4 text-center">
+                    <h3 className="text-xl font-semibold">{category.title}</h3>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
+
         </section>
       </main>
 
