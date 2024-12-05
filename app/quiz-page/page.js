@@ -1,6 +1,7 @@
 'use client';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import he from 'he'; // Import the 'he' library
 
 export default function QuizPage() {
     const searchParams = useSearchParams();
@@ -32,29 +33,43 @@ export default function QuizPage() {
     }, [categoryId]); // Dependency array ensures this runs when categoryId changes
 
     return (
-        <div>
-            <h1>Quiz: {categoryId}</h1>
+        <div className="min-h-screen bg-gray-100 flex flex-col">
+            {/* Quiz Header */}
+            <header className="bg-blue-600 text-white text-center py-10">
+                <h1 className="text-4xl font-bold">Quiz: {categoryId}</h1>
+            </header>
 
-            {loading ? (
-                <p>Loading questions...</p> // Show a loading message until questions are fetched
-            ) : (
-                // Render quiz content dynamically only if questions are loaded
-                questions && questions.length > 0 ? (
-                    questions.map((question, index) => (
-                        <div key={index}>
-                            <h2>Question {index + 1}: {question.question}</h2>
-                            <ul>
-                                {[...question.incorrect_answers, question.correct_answer].sort().map((choice, i) => (
-                                    <li key={i}>{choice}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))
-                    
+            {/* Quiz Content */}
+            <main className="flex-grow container mx-auto px-6 py-12">
+                {loading ? (
+                    <div className="text-center text-lg text-gray-600">
+                        <p>Loading questions...</p>
+                    </div>
                 ) : (
-                    <p>No questions found. Try reloading.</p> // Handle case where no questions are returned
-                )
-            )}
+                    <div>
+                        {questions && questions.length > 0 ? (
+                            questions.map((question, index) => (
+                                <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden mb-6 p-6">
+                                    <h2 className="text-2xl font-semibold mb-4">
+                                        Question {index + 1}: {he.decode(question.question)} {/* Decode question */}
+                                    </h2>
+                                    <ul className="space-y-2">
+                                        {[...question.incorrect_answers, question.correct_answer].sort().map((choice, i) => (
+                                            <li key={i} className="bg-gray-50 hover:bg-gray-200 p-3 rounded-lg cursor-pointer">
+                                                {he.decode(choice)} {/* Decode choices */}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))
+                        ) : (
+                            <div className="text-center text-lg text-gray-600">
+                                <p>No questions found. Try reloading.</p>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </main>
         </div>
     );
 }
