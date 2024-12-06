@@ -42,6 +42,7 @@ function QuizContent({ categoryId }) {
         }
     };
 
+    // Added categoryId to the dependency array
     useEffect(() => {
         if (categoryId) {
             getQuestions(categoryId);
@@ -189,6 +190,7 @@ export default function QuizPage() {
     const searchParams = useSearchParams();
     const categoryId = searchParams.get("categoryId");
 
+    // Suspense boundary for handling async loading of quiz content
     return (
         <Suspense fallback={<div>Loading...</div>}>
             {categoryId ? (
