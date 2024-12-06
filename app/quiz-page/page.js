@@ -52,7 +52,7 @@ export default function QuizPage() {
         } else {
             router.push("/categories-page");
         }
-    }, [categoryId]);
+    }, []);
 
     useEffect(() => {
         const decoded = questions.map((question) => ({
