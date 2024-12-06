@@ -1,81 +1,105 @@
-'use client';
-import { useSearchParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import he from 'he'; // Import the 'he' library
+"use client";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import he from "he";
+import categories from "../categories-page/categories.json";
+import Link from "next/link";
 
 export default function QuizPage() {
     const searchParams = useSearchParams();
     const router = useRouter();
-    const categoryId = searchParams.get('categoryId'); // Retrieve the categoryId from query parameters
+    const categoryId = searchParams.get("categoryId");
     const [questions, setQuestions] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [decodedQuestions, setDecodedQuestions] = useState([]); // State to store decoded questions
+    const [decodedQuestions, setDecodedQuestions] = useState([]);
+    const [answers, setAnswers] = useState({});
+    const [score, setScore] = useState(null); // To store the score after submission
+    const [isSubmitted, setIsSubmitted] = useState(false); // To track quiz submission
 
     const getQuestions = async (categoryId) => {
         let attempts = 0;
-        const maxAttempts = 5; // Maximum number of retries
-        let data = null;
+        const maxAttempts = 5;
 
         while (attempts < maxAttempts) {
             try {
-                const response = await fetch(`https://opentdb.com/api.php?amount=10&category=${categoryId}&type=multiple`);
-                data = await response.json();
+                const response = await fetch(
+                    `https://opentdb.com/api.php?amount=10&category=${categoryId}&type=multiple`
+                );
+                const data = await response.json();
 
-                if (data.response_code === 0) { // success
-                    console.log('Fetched Questions:', data.results);
+                if (data.response_code === 0) {
                     setQuestions(data.results);
                     setLoading(false);
-                    break; // Exit the loop if data is valid
-                } else if (data.response_code === 5) { // no results
-                    console.log('No results found, retrying...');
+                    break;
+                } else if (data.response_code === 5) {
                     attempts++;
-                    await new Promise(resolve => setTimeout(resolve, 2000)); // Wait for 2 seconds before retrying
+                    await new Promise((resolve) => setTimeout(resolve, 2000));
                 } else {
-                    console.log('Unexpected response code:', data.response_code);
                     setLoading(false);
-                    break; // Exit loop if response code is something else
+                    break;
                 }
-            } catch (error) {
-                console.error('Error fetching questions:', error);
+            } catch {
                 setLoading(false);
-                break; // Exit loop on error
+                break;
             }
-        }
-
-        // If we exhaust the retries, set loading to false and notify the user
-        if (attempts === maxAttempts && data?.response_code !== 0) {
-            console.log('Failed to fetch questions after several attempts.');
-            setLoading(false);
         }
     };
 
     useEffect(() => {
         if (categoryId) {
-            getQuestions(categoryId); // Automatically fetch questions when the page loads
+            getQuestions(categoryId);
         } else {
-            router.push('/categories-page'); // Redirect if categoryId is missing
+            router.push("/categories-page");
         }
-    }, [categoryId]); // Dependency array ensures this runs when categoryId changes
+    }, [categoryId]);
 
-    // Decode questions and choices on client-side after fetching
     useEffect(() => {
         const decoded = questions.map((question) => ({
             ...question,
-            question: he.decode(question.question), // Decode question text
-            incorrect_answers: question.incorrect_answers.map((answer) => he.decode(answer)), // Decode incorrect answers
-            correct_answer: he.decode(question.correct_answer), // Decode correct answer
+            question: he.decode(question.question),
+            incorrect_answers: question.incorrect_answers.map((answer) =>
+                he.decode(answer)
+            ),
+            correct_answer: he.decode(question.correct_answer),
         }));
-        setDecodedQuestions(decoded); // Update state with decoded questions
-    }, [questions]); // Runs when questions change
+        setDecodedQuestions(decoded);
+    }, [questions]);
+
+    const handleAnswerClick = (questionIndex, choice) => {
+        if (isSubmitted) return; // Prevent answer changes after submission
+        setAnswers((prevAnswers) => ({
+            ...prevAnswers,
+            [questionIndex]: choice,
+        }));
+    };
+
+    const handleSubmit = () => {
+        if (Object.keys(answers).length < decodedQuestions.length) {
+            alert("Please answer all questions before submitting!");
+            return;
+        }
+
+        let calculatedScore = 0;
+        decodedQuestions.forEach((question, index) => {
+            if (answers[index] === question.correct_answer) {
+                calculatedScore++;
+            }
+        });
+
+        setScore(calculatedScore);
+        setIsSubmitted(true); // Mark the quiz as submitted
+    };
+
+    const categoryName = categories.find(
+        (category) => category.id.toString() === categoryId
+    )?.title;
 
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col">
-            {/* Quiz Header */}
             <header className="bg-blue-600 text-white text-center py-10">
-                <h1 className="text-4xl font-bold">Quiz: {categoryId}</h1>
+                <h1 className="text-4xl font-bold">Quiz: {categoryName || "Loading..."}</h1>
             </header>
 
-            {/* Quiz Content */}
             <main className="flex-grow container mx-auto px-6 py-12">
                 {loading ? (
                     <div className="text-center text-lg text-gray-600">
@@ -84,20 +108,61 @@ export default function QuizPage() {
                 ) : (
                     <div>
                         {decodedQuestions.length > 0 ? (
-                            decodedQuestions.map((question, index) => (
-                                <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden mb-6 p-6">
-                                    <h2 className="text-2xl font-semibold mb-4">
-                                        Question {index + 1}: {question.question} {/* Display decoded question */}
-                                    </h2>
-                                    <ul className="space-y-2">
-                                        {[...question.incorrect_answers, question.correct_answer].sort().map((choice, i) => (
-                                            <li key={i} className="bg-gray-50 hover:bg-gray-200 p-3 rounded-lg cursor-pointer">
-                                                {choice} {/* Display decoded choice */}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            ))
+                            <>
+                                {decodedQuestions.map((question, index) => (
+                                    <div
+                                        key={index}
+                                        className="bg-white shadow-lg rounded-lg overflow-hidden mb-6 p-6"
+                                    >
+                                        <h2 className="text-2xl font-semibold mb-4">
+                                            Question {index + 1}: {question.question}
+                                        </h2>
+                                        <ul className="space-y-2">
+                                            {[...question.incorrect_answers, question.correct_answer]
+                                                .sort()
+                                                .map((choice, i) => {
+                                                    let bgClass = "bg-gray-50"; // Default background
+
+                                                    if (isSubmitted) {
+                                                        if (answers[index] === choice) {
+                                                            bgClass =
+                                                                choice === question.correct_answer
+                                                                    ? "bg-green-200"
+                                                                    : "bg-red-200";
+                                                        } else if (
+                                                            choice === question.correct_answer
+                                                        ) {
+                                                            bgClass = "bg-yellow-200";
+                                                        }
+                                                    } else if (answers[index] === choice) {
+                                                        bgClass = "bg-blue-200";
+                                                    }
+
+                                                    return (
+                                                        <li
+                                                            key={i}
+                                                            className={`p-3 rounded-lg cursor-pointer ${bgClass} ${!isSubmitted && "hover:bg-gray-200"
+                                                                }`}
+                                                            onClick={() =>
+                                                                handleAnswerClick(index, choice)
+                                                            }
+                                                        >
+                                                            {choice}
+                                                        </li>
+                                                    );
+                                                })}
+                                        </ul>
+                                    </div>
+                                ))}
+                                {!isSubmitted && (
+                                    <button
+                                        className="mt-6 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+                                        onClick={handleSubmit}
+                                    >
+                                        Submit
+                                    </button>
+                                )}
+                            </>
                         ) : (
                             <div className="text-center text-lg text-gray-600">
                                 <p>No questions found. Try reloading.</p>
@@ -106,6 +171,22 @@ export default function QuizPage() {
                     </div>
                 )}
             </main>
+
+            {score !== null && (
+                <footer className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center py-8">
+                    <h2 className="text-2xl font-bold mb-2">
+                        Your Score: <span className="text-yellow-300">{score}/{decodedQuestions.length}</span>
+                    </h2>
+                    <p className="text-lg mb-4">Great job! Ready to take another quiz?</p>
+                    <Link
+                        href="/categories-page"
+                        className="bg-yellow-400 text-blue-800 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-yellow-500 transition duration-300 ease-in-out"
+                    >
+                        Go to Categories
+                    </Link>
+                </footer>
+
+            )}
         </div>
     );
 }
