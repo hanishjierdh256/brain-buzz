@@ -15,8 +15,12 @@ export default function QuizPage() {
     const [answers, setAnswers] = useState({});
     const [score, setScore] = useState(null); // To store the score after submission
     const [isSubmitted, setIsSubmitted] = useState(false); // To track quiz submission
+    const [hasFetched, setHasFetched] = useState(false); // New state to track if data is already fetched
 
     const getQuestions = async (categoryId) => {
+        if (hasFetched) return; // Prevent fetching again if data is already fetched
+
+        setLoading(true);
         let attempts = 0;
         const maxAttempts = 5;
 
@@ -29,7 +33,18 @@ export default function QuizPage() {
 
                 if (data.response_code === 0) {
                     setQuestions(data.results);
+                    setDecodedQuestions(
+                        data.results.map((question) => ({
+                            ...question,
+                            question: he.decode(question.question),
+                            incorrect_answers: question.incorrect_answers.map((answer) =>
+                                he.decode(answer)
+                            ),
+                            correct_answer: he.decode(question.correct_answer),
+                        }))
+                    );
                     setLoading(false);
+                    setHasFetched(true); // Set to true once data is fetched
                     break;
                 } else if (data.response_code === 5) {
                     attempts++;
@@ -51,19 +66,7 @@ export default function QuizPage() {
         } else {
             router.push("/categories-page");
         }
-    }, [categoryId]);
-
-    useEffect(() => {
-        const decoded = questions.map((question) => ({
-            ...question,
-            question: he.decode(question.question),
-            incorrect_answers: question.incorrect_answers.map((answer) =>
-                he.decode(answer)
-            ),
-            correct_answer: he.decode(question.correct_answer),
-        }));
-        setDecodedQuestions(decoded);
-    }, [questions]);
+    }, [categoryId, router]); // Ensure router and categoryId are in the dependency array
 
     const handleAnswerClick = (questionIndex, choice) => {
         if (isSubmitted) return; // Prevent answer changes after submission
@@ -185,7 +188,6 @@ export default function QuizPage() {
                         Go to Categories
                     </Link>
                 </footer>
-
             )}
         </div>
     );
