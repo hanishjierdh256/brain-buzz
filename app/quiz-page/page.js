@@ -1,15 +1,11 @@
 "use client";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import he from "he";
 import categories from "../categories-page/categories.json";
 import Link from "next/link";
-import { Suspense } from "react";
 
-export default function QuizPage() {
-    const searchParams = useSearchParams();
-    const router = useRouter();
-    const categoryId = searchParams.get("categoryId");
+function QuizContent({ categoryId }) {
     const [questions, setQuestions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [decodedQuestions, setDecodedQuestions] = useState([]);
@@ -49,10 +45,8 @@ export default function QuizPage() {
     useEffect(() => {
         if (categoryId) {
             getQuestions(categoryId);
-        } else {
-            router.push("/categories-page");
         }
-    }, []);
+    }, [categoryId]);
 
     useEffect(() => {
         const decoded = questions.map((question) => ({
@@ -96,100 +90,112 @@ export default function QuizPage() {
     )?.title;
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <div className="min-h-screen bg-gray-100 flex flex-col">
-                <header className="bg-blue-600 text-white text-center py-10">
-                    <h1 className="text-4xl font-bold">Quiz: {categoryName || "Loading..."}</h1>
-                </header>
+        <div className="min-h-screen bg-gray-100 flex flex-col">
+            <header className="bg-blue-600 text-white text-center py-10">
+                <h1 className="text-4xl font-bold">Quiz: {categoryName || "Loading..."}</h1>
+            </header>
 
-                <main className="flex-grow container mx-auto px-6 py-12">
-                    {loading ? (
-                        <div className="text-center text-lg text-gray-600">
-                            <p>Loading questions...</p>
-                        </div>
-                    ) : (
-                        <div>
-                            {decodedQuestions.length > 0 ? (
-                                <>
-                                    {decodedQuestions.map((question, index) => (
-                                        <div
-                                            key={index}
-                                            className="bg-white shadow-lg rounded-lg overflow-hidden mb-6 p-6"
-                                        >
-                                            <h2 className="text-2xl font-semibold mb-4">
-                                                Question {index + 1}: {question.question}
-                                            </h2>
-                                            <ul className="space-y-2">
-                                                {[...question.incorrect_answers, question.correct_answer]
-                                                    .sort()
-                                                    .map((choice, i) => {
-                                                        let bgClass = "bg-gray-50"; // Default background
+            <main className="flex-grow container mx-auto px-6 py-12">
+                {loading ? (
+                    <div className="text-center text-lg text-gray-600">
+                        <p>Loading questions...</p>
+                    </div>
+                ) : (
+                    <div>
+                        {decodedQuestions.length > 0 ? (
+                            <>
+                                {decodedQuestions.map((question, index) => (
+                                    <div
+                                        key={index}
+                                        className="bg-white shadow-lg rounded-lg overflow-hidden mb-6 p-6"
+                                    >
+                                        <h2 className="text-2xl font-semibold mb-4">
+                                            Question {index + 1}: {question.question}
+                                        </h2>
+                                        <ul className="space-y-2">
+                                            {[...question.incorrect_answers, question.correct_answer]
+                                                .sort()
+                                                .map((choice, i) => {
+                                                    let bgClass = "bg-gray-50"; // Default background
 
-                                                        if (isSubmitted) {
-                                                            if (answers[index] === choice) {
-                                                                bgClass =
-                                                                    choice === question.correct_answer
-                                                                        ? "bg-green-200"
-                                                                        : "bg-red-200";
-                                                            } else if (
+                                                    if (isSubmitted) {
+                                                        if (answers[index] === choice) {
+                                                            bgClass =
                                                                 choice === question.correct_answer
-                                                            ) {
-                                                                bgClass = "bg-yellow-200";
-                                                            }
-                                                        } else if (answers[index] === choice) {
-                                                            bgClass = "bg-blue-200";
+                                                                    ? "bg-green-200"
+                                                                    : "bg-red-200";
+                                                        } else if (
+                                                            choice === question.correct_answer
+                                                        ) {
+                                                            bgClass = "bg-yellow-200";
                                                         }
+                                                    } else if (answers[index] === choice) {
+                                                        bgClass = "bg-blue-200";
+                                                    }
 
-                                                        return (
-                                                            <li
-                                                                key={i}
-                                                                className={`p-3 rounded-lg cursor-pointer ${bgClass} ${!isSubmitted && "hover:bg-gray-200"
-                                                                    }`}
-                                                                onClick={() =>
-                                                                    handleAnswerClick(index, choice)
-                                                                }
-                                                            >
-                                                                {choice}
-                                                            </li>
-                                                        );
-                                                    })}
-                                            </ul>
-                                        </div>
-                                    ))}
-                                    {!isSubmitted && (
-                                        <button
-                                            className="mt-6 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
-                                            onClick={handleSubmit}
-                                        >
-                                            Submit
-                                        </button>
-                                    )}
-                                </>
-                            ) : (
-                                <div className="text-center text-lg text-gray-600">
-                                    <p>No questions found. Try reloading.</p>
-                                </div>
-                            )}
-                        </div>
-                    )}
-                </main>
-
-                {score !== null && (
-                    <footer className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center py-8">
-                        <h2 className="text-2xl font-bold mb-2">
-                            Your Score: <span className="text-yellow-300">{score}/{decodedQuestions.length}</span>
-                        </h2>
-                        <p className="text-lg mb-4">Great job! Ready to take another quiz?</p>
-                        <Link
-                            href="/categories-page"
-                            className="bg-yellow-400 text-blue-800 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-yellow-500 transition duration-300 ease-in-out"
-                        >
-                            Go to Categories
-                        </Link>
-                    </footer>
-
+                                                    return (
+                                                        <li
+                                                            key={i}
+                                                            className={`p-3 rounded-lg cursor-pointer ${bgClass} ${!isSubmitted && "hover:bg-gray-200"
+                                                                }`}
+                                                            onClick={() =>
+                                                                handleAnswerClick(index, choice)
+                                                            }
+                                                        >
+                                                            {choice}
+                                                        </li>
+                                                    );
+                                                })}
+                                        </ul>
+                                    </div>
+                                ))}
+                                {!isSubmitted && (
+                                    <button
+                                        className="mt-6 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+                                        onClick={handleSubmit}
+                                    >
+                                        Submit
+                                    </button>
+                                )}
+                            </>
+                        ) : (
+                            <div className="text-center text-lg text-gray-600">
+                                <p>No questions found. Try reloading.</p>
+                            </div>
+                        )}
+                    </div>
                 )}
-            </div>
+            </main>
+
+            {score !== null && (
+                <footer className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center py-8">
+                    <h2 className="text-2xl font-bold mb-2">
+                        Your Score: <span className="text-yellow-300">{score}/{decodedQuestions.length}</span>
+                    </h2>
+                    <p className="text-lg mb-4">Great job! Ready to take another quiz?</p>
+                    <Link
+                        href="/categories-page"
+                        className="bg-yellow-400 text-blue-800 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-yellow-500 transition duration-300 ease-in-out"
+                    >
+                        Go to Categories
+                    </Link>
+                </footer>
+            )}
+        </div>
+    );
+}
+
+export default function QuizPage() {
+    const searchParams = useSearchParams();
+    const categoryId = searchParams.get("categoryId");
+
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            {categoryId ? (
+                <QuizContent categoryId={categoryId} />
+            ) : (
+                <div>Loading...</div>
+            )}
         </Suspense>
     );
 }
